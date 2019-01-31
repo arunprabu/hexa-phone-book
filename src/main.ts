@@ -8,6 +8,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+// Step2: Every ng app should be bootstrapped with a module.
+platformBrowserDynamic().bootstrapModule(AppModule)  
   .catch(err => console.error(err));
 
