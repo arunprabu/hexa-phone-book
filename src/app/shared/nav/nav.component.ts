@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  //ts 
   constructor() { }
 
   ngOnInit() {

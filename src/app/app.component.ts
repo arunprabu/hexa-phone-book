@@ -9,6 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'] //css
 })
 export class AppComponent {
-  //ts 
-  title = 'hexa-phone-book';
+  
 }
