@@ -19,6 +19,9 @@
   <li class="nav-item">
     <a class="nav-link" id="ceb-tab" data-toggle="tab" href="#ceb" role="tab" aria-controls="ceb" aria-selected="false">CEB</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" id="sd-tab" data-toggle="tab" href="#sd" role="tab" aria-controls="sd" aria-selected="false">Directives</a>
+  </li>
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="si" role="tabpanel" aria-labelledby="si-tab">
@@ -44,5 +47,12 @@
     <!-- this is parent component -->
     <p>Your last Visit: {{ youLastVisited }}</p>
     <app-ceb (findLastVisit)="onFindLastVisitHandler($event)"></app-ceb>
+  </div>
+
+  <div class="tab-pane fade" id="sd" role="tabpanel" aria-labelledby="sd-tab">
+    <h2>Directives</h2>
+    <h4>1. Attribute Directives</h4>
+    <p>Examples: routerLink, ngClass, ngStyle</p>
+
   </div>
 </div>

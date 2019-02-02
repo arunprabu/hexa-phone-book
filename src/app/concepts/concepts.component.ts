@@ -1,21 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren } from '@angular/core';
+import { CebComponent } from './ceb/ceb.component';
 
 @Component({
   selector: 'app-concepts',
   templateUrl: './concepts.component.html',
   styles: []
 })
-export class ConceptsComponent implements OnInit {
+export class ConceptsComponent implements OnInit, AfterViewInit {
+
+  @ViewChild(CebComponent) cebData;
+  // TODO: use @ViewChildren() 
 
   youLastVisited: string;
-  constructor() { }
-
-  ngOnInit() {
+  constructor() { 
+    console.log("Inside Concepts Constructor");
   }
 
-  // getMyAge():number {
-  //   return 60;
-  // }
+  ngOnInit() {
+    console.log("Inside ngOnInit");
+  }
+
+  ngAfterViewInit(){
+    console.log("Inside ngAfterViewInit");
+    console.log(this.cebData);
+  }
 
   onFindLastVisitHandler(data){
     console.log(data);

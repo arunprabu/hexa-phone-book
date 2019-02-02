@@ -13,11 +13,17 @@ export class CebComponent implements OnInit {
   //// step 1: creating custom event in the name of findLastVisit
   @Output() findLastVisit = new EventEmitter<string>();
 
+
+  // For @ViewChild 
+  featureName: string = "Custom Evt Binding";
+
   constructor() { 
+    console.log("Inside CEB Constructor");
     this.dateOfLastVisit = new Date();
   }
 
   ngOnInit() {
+    console.log("Inside ngOnInit");
   }
 
   onSendHandler(){
