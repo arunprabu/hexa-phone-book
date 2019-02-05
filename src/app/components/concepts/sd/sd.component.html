@@ -1,0 +1,33 @@
+<p>*ngIf </p>
+<div class="red" *ngIf="!isAuthenticated()">
+  Please login to access the content
+</div>
+
+<div class="green" *ngIf="isAuthenticated()">
+  You can access premium content
+</div>
+
+
+<p>*ngIf with Template Reference (for else condition)</p>
+<div *ngIf="isAuthenticated(); else loggedOut">
+  Welcome back, friend.
+</div>
+
+<ng-template #loggedOut>
+  Please friend, login.
+</ng-template>
+
+
+<hr>
+<br>
+<p>*ngFor</p>
+<ul>
+  <li *ngFor="let menu of sideMenus"><a href="{{menu.url}}">{{ menu.name }}</a></li>
+</ul>
+
+<hr>
+<br>
+<p>ngSwitch - Task</p>
+<!-- ToDO: -->
+
+<hr>
