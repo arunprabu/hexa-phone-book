@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { AddContactComponent } from './components/contacts/add-contact/add-conta
 import { ContactDetailsComponent } from './components/contacts/contact-details/contact-details.component';
 import { SdComponent } from './components/concepts/sd/sd.component';
 import { ColorizerDirective } from './directives/colorizer.directive';
+import { GetInTouchComponent } from './components/get-in-touch/get-in-touch.component';
 
 
 const APP_ROUTES: Routes = [
@@ -28,7 +29,8 @@ const APP_ROUTES: Routes = [
   { path: 'concepts', component: ConceptsComponent},
   { path: 'contacts', component: ContactsComponent },
   { path: 'contacts/new', component: AddContactComponent },  // TODO: instead of this use child routing
-  { path: 'contacts/:contactId', component: ContactDetailsComponent }  // TODO: instead of this use child routing,
+  { path: 'contacts/:contactId', component: ContactDetailsComponent },  // TODO: instead of this use child routing,
+  { path: 'get-in-touch', component: GetInTouchComponent}
 ]
 
 //main switching box 
@@ -53,14 +55,18 @@ const APP_ROUTES: Routes = [
     AddContactComponent,
     ContactDetailsComponent,
     SdComponent,
-    ColorizerDirective
+    ColorizerDirective,
+    GetInTouchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,  //we used it to implement two way binding 
+    ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES)   //for registering routes
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent] // Step3: Module should in turn be bootstrapped with a component 
 })
 export class AppModule { }
