@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -62,7 +63,12 @@ const APP_ROUTES: Routes = [
     BrowserModule,
     FormsModule,  //we used it to implement two way binding 
     ReactiveFormsModule,
-    RouterModule.forRoot(APP_ROUTES)   //for registering routes
+    RouterModule.forRoot(APP_ROUTES //, 
+                          // {
+                          //   enableTracing: true // it will print the routing trace in console.log -- it is optional
+                          // }
+    ),   //for registering routes
+    HttpModule
   ],
   providers: [
     

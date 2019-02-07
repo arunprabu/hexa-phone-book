@@ -8,9 +8,11 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class AddContactComponent implements OnInit {
 
-  
-  constructor( private contactService: ContactService ) {  //1. connect to service using dependency injection
+  submissionStatus: string;
+  statusCode: number;
 
+  constructor( private contactService: ContactService ) {  //1. connect to service using dependency injection
+    
   }
 
   ngOnInit() {
@@ -26,13 +28,16 @@ export class AddContactComponent implements OnInit {
 
     console.log(formData.value);
     
-
     //2. send formData.value to service 
     this.contactService.create(formData.value)
-
-    //3. get response from service 
-    //4. bind it to html 
-    
+                        .subscribe( (resp) => {  //3. get response from service 
+                          console.log(resp);
+                          if(resp && resp.id){
+                            //4. assign it to local variable so that it can be used in html thru data binding
+                            this.submissionStatus = "Thanks for Creating a contact";
+                            this.statusCode = 200; 
+                          }
+                        });
   }
 
 }

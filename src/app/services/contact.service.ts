@@ -1,19 +1,55 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { map } from 'rxjs/operators';
 
 //decorator 
 @Injectable({
   providedIn: 'root'
 })
+// app-wide and lazy loading services
 export class ContactService {
 
-  constructor() { }
+  _url: string; 
+
+  constructor( private http: Http) { }
 
   //1. get data from comp 
   create( contactData ){
     console.log(contactData);
+
     //2. send the data to rest api 
-    //3. receive response from rest api 
-    //4. send it back to component 
+    return this.http.post('http://jsonplaceholder.typicode.com/users', contactData)
+                    .pipe(map( (resp: any ) =>{ //3. receive resp from rest api 
+                      console.log(resp);
+                      return resp.json(); // 4. send the resp back to the component 
+                    }))
+  }
+
+  getContacts(){
+     //2. send request to rest api 
+    return this.http.get('http://jsonplaceholder.typicode.com/users')
+                    .pipe(map( (resp: any ) =>{ //3. receive resp from rest api 
+                      console.log(resp);
+                      return resp.json(); // 4. send the resp back to the component 
+                    }));
+  }
+
+  getContactById( contactId: number){
+    //2. send request to rest api
+    this._url = `http://jsonplaceholder.typicode.com/users/${contactId}`;
+    return this.http.get(this._url)
+                    .pipe(map( (resp: any ) =>{ //3. receive resp from rest api 
+                      console.log(resp);
+                      return resp.json(); // 4. send the resp back to the component 
+                    }));
+  }
+
+  update(){
+
+  }
+
+  delete(){
+
   }
 
 }
