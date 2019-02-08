@@ -22,16 +22,21 @@ import { ContactDetailsComponent } from './components/contacts/contact-details/c
 import { SdComponent } from './components/concepts/sd/sd.component';
 import { ColorizerDirective } from './directives/colorizer.directive';
 import { GetInTouchComponent } from './components/get-in-touch/get-in-touch.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AboutComponent } from './components/about/about.component';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
 
 
 const APP_ROUTES: Routes = [
   //syntax : path should have string and the component when that path is hit
+  // //ref: https://github.com/arunprabu/ng4-july18/blob/master/Router%20Instructions%20-%20More%20-%20Child%20Routes.txt
   { path: '', component: ConceptsComponent },
   { path: 'concepts', component: ConceptsComponent},
   { path: 'contacts', component: ContactsComponent },
-  { path: 'contacts/new', component: AddContactComponent },  // TODO: instead of this use child routing
-  { path: 'contacts/:contactId', component: ContactDetailsComponent },  // TODO: instead of this use child routing,
-  { path: 'get-in-touch', component: GetInTouchComponent}
+  { path: 'contacts/new', component: AddContactComponent, canActivate: [ AuthGuard] },  // TODO: instead of this use child routing 
+  { path: 'contacts/:id', component: ContactDetailsComponent },  // TODO: instead of this use child routing,
+  { path: 'get-in-touch', component: GetInTouchComponent},
+  { path: 'about', component: AboutComponent},
 ]
 
 //main switching box 
@@ -57,7 +62,9 @@ const APP_ROUTES: Routes = [
     ContactDetailsComponent,
     SdComponent,
     ColorizerDirective,
-    GetInTouchComponent
+    GetInTouchComponent,
+    AboutComponent,
+    EllipsisPipe
   ],
   imports: [
     BrowserModule,

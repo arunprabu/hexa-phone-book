@@ -1,0 +1,23 @@
+<div>
+  <h2>Pipes</h2>
+  <p>The hero's birthday is {{ birthday }}</p>
+  <p>The hero's birthday is {{ birthday | date }}</p>
+
+  <p>The hero's birthday is {{ birthday | date: 'dd/MMMM, yyyy - hh:mm:ss a' }}</p>
+
+
+  <hr>
+  <p>{{ loremIpsum }} </p>
+  <p>{{ loremIpsum | ellipsis: '60' }} </p>
+  <p>{{ loremIpsum | ellipsis: '120' }} </p>
+  <p>{{ loremIpsum | ellipsis: '160' }} </p>
+
+  <hr><hr>
+  <br>
+  <h2>Cross component communication via Common shared services</h2>
+  Name is:  {{ profileName }} <br><br>
+  <input type="text" [(ngModel)]="newName"> <br><br>
+  <button type="button" (click)="updateNameHandler()">Update Name</button>
+
+</div>
+

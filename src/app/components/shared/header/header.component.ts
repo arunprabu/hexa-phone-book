@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAccountService } from 'src/app/services/shared/user-account.service';
 
 @Component({
   selector: 'app-header',   //selector
@@ -8,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   //ts
 
-  constructor() { }
+  profileName:string;
+  constructor(private userAccountService: UserAccountService) {
+    this.userAccountService.latestUserProfile.subscribe((value) => {
+      console.log(value);
+      this.profileName = value;
+    });
+  }
 
   ngOnInit() {
   }
