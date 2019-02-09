@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { map } from 'rxjs/operators';
 
 import {environment} from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 
 //decorator 
@@ -12,9 +13,9 @@ import {environment} from '../../environments/environment';
 // app-wide and lazy loading services
 export class ContactService {
 
-  _url: string; 
+  _url: string;
   
-  constructor( private http: Http) { 
+  constructor( private http: Http, private httpClient: HttpClient) { 
     
   }
 
@@ -26,7 +27,7 @@ export class ContactService {
                     .pipe(map( (resp: any ) =>{ //3. receive resp from rest api 
                       console.log(resp);
                       return resp.json(); // 4. send the resp back to the component 
-                    }))
+                    }));
   }
 
   getContacts(){
@@ -46,6 +47,10 @@ export class ContactService {
                       console.log(resp);
                       return resp.json(); // 4. send the resp back to the component 
                     }));
+
+    //ToDo: 
+    // implement the above logic using httpClient 
+
   }
 
 

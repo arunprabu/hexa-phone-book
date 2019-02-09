@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from 'src/app/services/contact.service';
 import { ActivatedRoute } from '@angular/router';
 
+import { IContact } from 'src/app/interfaces/icontact';
+import { Alert } from 'src/app/utils/alert';
+
 declare var $:any;
 
 @Component({
@@ -11,12 +14,13 @@ declare var $:any;
 })
 export class ContactDetailsComponent implements OnInit {
 
-  contactData: Object;
-  updateableContactData: Object;
+  contactData: IContact;  // custom data type 
+  updateableContactData: IContact;
   contactId: number;
 
   constructor( private contactService: ContactService,
-               private activatedRoute: ActivatedRoute
+               private activatedRoute: ActivatedRoute,
+               private alert: Alert
     ) {
     
     //read url params and get 'contactId' from id as it was specified in app.module routes setup
@@ -32,6 +36,7 @@ export class ContactDetailsComponent implements OnInit {
                        .subscribe( (resp) => {
                           console.log(resp);
                           this.contactData = resp;
+                          this.alert.showMsg("Data Loaded successfully");
                        });
   }
 

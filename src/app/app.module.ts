@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -25,6 +27,7 @@ import { GetInTouchComponent } from './components/get-in-touch/get-in-touch.comp
 import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './components/about/about.component';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
+
 
 
 const APP_ROUTES: Routes = [
@@ -75,7 +78,9 @@ const APP_ROUTES: Routes = [
                           //   enableTracing: true // it will print the routing trace in console.log -- it is optional
                           // }
     ),   //for registering routes
-    HttpModule
+    HttpModule,
+    HttpClientModule, //needed if you use http client to connect to rest api from services 
+    DataTablesModule
   ],
   providers: [
     

@@ -12,14 +12,14 @@ export class SiComponent implements OnInit {
   myAge: number = 20;
 
   mySkillsList: string[] = [ 'html', 'css', 'js'];
-  myProfile: object = {
-    name: 'Arun',
-    exp: '14 years'
-  }
+  //myProfile: IProfile;
+
 
   help: string = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus dolores fugit veniam dignissimos tempore similique pariatur veritatis nisi dicta sit, porro deserunt eum, cumque amet quae nostrum. Ea, rerum ducimus.";
   
-  constructor() { }
+  constructor() { 
+    //this.myProfile.exp = "14 years";
+  }
 
   ngOnInit() {
   }
@@ -29,3 +29,8 @@ export class SiComponent implements OnInit {
   }
 
 }
+
+// export interface IProfile{
+//   name: string,
+//   exp: string
+// }
